@@ -1,0 +1,6 @@
+<!--The whole content below can be removed with the new code.-->
+<div class="container">
+    <h1>Welcome to Ninja Studio</h1>
+</div>
+<app-add-ninja [ninja]="ninja" (onGetName)="onName($event)" (onGetBelt)="onBelt($event)"></app-add-ninja>
+<app-list-ninja [ninja]="ninja"></app-list-ninja>
