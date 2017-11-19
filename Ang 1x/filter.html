@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Filter in Angular</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="user-modules/filter.js"></script>
+        <script>
+            angular.module("root", ["filters"])
+                .controller("index", ["$scope", "roundFilter", "dollarsFilter", function($scope, roundFilter, dollarsFilter){
+                    $scope.amount = dollarsFilter(roundFilter(6, 2));
+                }]);r
+        </script>
+    </head>
+    
+    <body ng-app="root">
+        <div ng-controller="index">
+            <input type="text" ng-model="amount">{{amount}}
+        </div>
+    </body>
+</html>

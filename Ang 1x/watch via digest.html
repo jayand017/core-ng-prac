@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Watch via Digest in Angular</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script>
+            angular.module("root", [])
+                .controller("index", ["$scope", function($scope){
+                    $scope.data = {time : new Date()};   
+
+                    $scope.updateTime = function(){
+                        $scope.data.time = new Date();
+                    }
+
+                    document.getElementById("updateTimeButton")
+                        .addEventListener("click", function(){
+                            console.log("clicked");
+                            $scope.data.time = new Date();
+                            //removing the digest will not update time on click, digest calls watch internally
+                            $scope.$digest();
+                        });
+                }]);
+        </script>
+    </head>
+    
+    <body ng-app="root">
+        <div ng-controller="index">
+            {{data.time}}
+
+            <br/>
+            <button ng-click="updateTime()" >update time: ng-click</button>
+            <button id="updateTimeButton">update time: via element-id</button>
+        </div>
+    </body>
+</html>

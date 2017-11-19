@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Route Provider in Angular</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+        <script>
+            angular.module("root", ["ngRoute"])
+                .config(["$routeProvider", function($routeProvider){
+                    $routeProvider
+                        .when("/", {
+                            template : "This is the index page"
+                        })
+                        .when("/red",{
+                            template: "This is the red page"
+                        })
+                        .when("/green",{
+                            template: "This is the green page"
+                        })
+                        .otherwise({
+                            template: "This is otherwise page"
+                        });
+                }]);
+               
+        </script>
+    </head>
+    
+    <body ng-app="root">
+        <a href="#!/">Index</a>
+        <a href="#!/green">Green</a>
+        <a href="#!/red">Red</a>
+        <ng-view></ng-view>
+
+        <div ng-controller="index">
+            
+        </div>
+    </body>
+</html>

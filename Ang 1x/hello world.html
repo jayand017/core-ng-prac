@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Hello World in Angular</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script>
+            angular.module("root", [])
+                .controller("index", ["$scope", function($scope){
+                    $scope.message = "Hello World!";
+                }]);
+        </script>
+    </head>
+    
+    <body ng-app="root">
+        <div ng-controller="index">
+            {{message}}
+        </div>
+    </body>
+</html>

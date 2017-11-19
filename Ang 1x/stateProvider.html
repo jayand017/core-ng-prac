@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>StateProvider in Angular</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+        <script>
+            angular.module("root", ["ui.router"])
+                .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
+                    $stateProvider
+                        .state("link1", {
+                            url: "/",
+                            template : "This is the index page"
+                        })
+                        .state("link2",{
+                            url: "/red",
+                            template: "This is the red page"
+                        })
+                        .state("link3",{
+                            url: "/green",
+                            template: "This is the green page"
+                        });
+                        $urlRouterProvider.otherwise('/err');
+                }]);
+               
+        </script>
+    </head>
+    
+    <body ng-app="root">
+        <a ui-sref="link1">Index</a>
+        <a ui-sref="link2">Green</a>
+        <a ui-sref="link3">Red</a>
+        <ui-view></ui-view>
+        <div ng-controller="index">
+            
+        </div>
+    </body>
+</html>
